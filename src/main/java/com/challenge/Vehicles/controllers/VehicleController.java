@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.challenge.Vehicles.dtos.vehicle.CarCreateDTO;
-import com.challenge.Vehicles.dtos.vehicle.TruckCreateDTO;
+import com.challenge.Vehicles.dtos.car.CarCreateDTO;
+import com.challenge.Vehicles.dtos.truck.TruckCreateDTO;
 import com.challenge.Vehicles.dtos.vehicle.VehicleBaseDTO;
 import com.challenge.Vehicles.dtos.vehicle.VehicleResponseDTO;
 import com.challenge.Vehicles.dtos.vehicle.VehicleUpdateDTO;

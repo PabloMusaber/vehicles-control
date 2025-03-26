@@ -9,8 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import com.challenge.Vehicles.dtos.vehicle.CarCreateDTO;
-import com.challenge.Vehicles.dtos.vehicle.TruckCreateDTO;
+import com.challenge.Vehicles.dtos.car.CarCreateDTO;
+import com.challenge.Vehicles.dtos.truck.TruckCreateDTO;
 import com.challenge.Vehicles.dtos.vehicle.VehicleBaseDTO;
 import com.challenge.Vehicles.dtos.vehicle.VehicleResponseDTO;
 import com.challenge.Vehicles.dtos.vehicle.VehicleUpdateDTO;

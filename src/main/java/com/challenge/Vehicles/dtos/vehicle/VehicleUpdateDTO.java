@@ -1,11 +1,8 @@
 package com.challenge.Vehicles.dtos.vehicle;
 
-import jakarta.validation.constraints.NotNull;
-
 public class VehicleUpdateDTO {
-    @NotNull(message = "ID is required")
-    private Long id;
 
+    private Long id;
     private String brand;
     private String model;
     private String licensePlate;

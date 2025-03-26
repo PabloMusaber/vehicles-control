@@ -1,5 +1,6 @@
-package com.challenge.Vehicles.dtos.vehicle;
+package com.challenge.Vehicles.dtos.truck;
 
+import com.challenge.Vehicles.dtos.vehicle.VehicleBaseDTO;
 import com.challenge.Vehicles.enums.TruckType;
 
 public class TruckCreateDTO extends VehicleBaseDTO {
