@@ -24,6 +24,9 @@ public class Car extends Vehicle {
     @Column(name = "trunk_capacity", nullable = false)
     private Integer trunkCapacity;
 
+    public Car() {
+    }
+
     public Car(CarType type, Integer doors, Integer passangers, Integer trunkCapacity) {
         this.type = type;
         this.doors = doors;

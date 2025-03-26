@@ -18,25 +18,23 @@ public class Truck extends Vehicle {
     @Column(name = "load_capacity", nullable = false)
     private Integer loadCapacity;
 
-    @Column(name = "passangers", nullable = false)
-    private Integer passangers;
-
     @Column(name = "axes", nullable = false)
     private Integer axes;
 
-    public Truck(TruckType type, Integer loadCapacity, Integer passangers, Integer axes) {
+    public Truck() {
+    }
+
+    public Truck(TruckType type, Integer loadCapacity, Integer axes) {
         this.type = type;
         this.loadCapacity = loadCapacity;
-        this.passangers = passangers;
         this.axes = axes;
     }
 
     public Truck(String brand, String model, String licensePlate, Integer year, Integer mileage,
-            Double engineDisplacement, TruckType type, Integer loadCapacity, Integer passangers, Integer axes) {
+            Double engineDisplacement, TruckType type, Integer loadCapacity, Integer axes) {
         super(brand, model, licensePlate, year, mileage, engineDisplacement);
         this.type = type;
         this.loadCapacity = loadCapacity;
-        this.passangers = passangers;
         this.axes = axes;
     }
 
@@ -54,14 +52,6 @@ public class Truck extends Vehicle {
 
     public void setLoadCapacity(Integer loadCapacity) {
         this.loadCapacity = loadCapacity;
-    }
-
-    public Integer getPassangers() {
-        return passangers;
-    }
-
-    public void setPassangers(Integer passangers) {
-        this.passangers = passangers;
     }
 
     public Integer getAxes() {

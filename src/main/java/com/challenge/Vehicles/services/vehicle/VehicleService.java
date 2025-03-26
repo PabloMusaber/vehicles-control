@@ -2,12 +2,12 @@ package com.challenge.Vehicles.services.vehicle;
 
 import java.util.List;
 
-import com.challenge.Vehicles.dtos.vehicle.VehicleCreateDTO;
+import com.challenge.Vehicles.dtos.vehicle.VehicleBaseDTO;
 import com.challenge.Vehicles.dtos.vehicle.VehicleResponseDTO;
 import com.challenge.Vehicles.dtos.vehicle.VehicleUpdateDTO;
 
 public interface VehicleService {
-    VehicleResponseDTO createVehicle(VehicleCreateDTO vehicleCreateDTO);
+    VehicleResponseDTO createVehicle(VehicleBaseDTO VehicleBaseDTO);
 
     VehicleResponseDTO updateVehicle(VehicleUpdateDTO vehicleUpdateDTO);
 

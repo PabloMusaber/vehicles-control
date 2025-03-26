@@ -9,11 +9,16 @@ import org.slf4j.LoggerFactory;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import com.challenge.Vehicles.dtos.vehicle.VehicleCreateDTO;
+import com.challenge.Vehicles.dtos.vehicle.CarCreateDTO;
+import com.challenge.Vehicles.dtos.vehicle.TruckCreateDTO;
+import com.challenge.Vehicles.dtos.vehicle.VehicleBaseDTO;
 import com.challenge.Vehicles.dtos.vehicle.VehicleResponseDTO;
 import com.challenge.Vehicles.dtos.vehicle.VehicleUpdateDTO;
+import com.challenge.Vehicles.entities.Car;
+import com.challenge.Vehicles.entities.Truck;
 import com.challenge.Vehicles.entities.Vehicle;
 import com.challenge.Vehicles.exceptions.VehicleNotFoundException;
+import com.challenge.Vehicles.exceptions.VehicleNotValidException;
 import com.challenge.Vehicles.repositories.VehicleRepository;
 
 import jakarta.transaction.Transactional;
@@ -32,10 +37,20 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     @Transactional
-    public VehicleResponseDTO createVehicle(VehicleCreateDTO vehicleCreateDTO) {
-        Vehicle vehicle = modelMapper.map(vehicleCreateDTO, Vehicle.class);
+    public VehicleResponseDTO createVehicle(VehicleBaseDTO vehicleBaseDTO) {
+        Vehicle vehicle;
+
+        if (vehicleBaseDTO instanceof CarCreateDTO carDTO) {
+            vehicle = modelMapper.map(carDTO, Car.class);
+        } else if (vehicleBaseDTO instanceof TruckCreateDTO truckDTO) {
+            vehicle = modelMapper.map(truckDTO, Truck.class);
+        } else {
+            throw new VehicleNotValidException();
+        }
+
         Vehicle savedVehicle = vehicleRepository.save(vehicle);
         log.info("Vehicle created with license plate: " + savedVehicle.getLicensePlate());
+
         return modelMapper.map(savedVehicle, VehicleResponseDTO.class);
     }
 

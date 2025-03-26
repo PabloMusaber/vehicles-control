@@ -1,6 +1,6 @@
 package com.challenge.Vehicles.dtos.vehicle;
 
-public class VehicleCreateDTO {
+public abstract class VehicleBaseDTO {
     private String brand;
     private String model;
     private String licensePlate;

@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.challenge.Vehicles.dtos.vehicle.VehicleCreateDTO;
+import com.challenge.Vehicles.dtos.vehicle.CarCreateDTO;
+import com.challenge.Vehicles.dtos.vehicle.TruckCreateDTO;
+import com.challenge.Vehicles.dtos.vehicle.VehicleBaseDTO;
 import com.challenge.Vehicles.dtos.vehicle.VehicleResponseDTO;
 import com.challenge.Vehicles.dtos.vehicle.VehicleUpdateDTO;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,8 +33,22 @@ public class VehicleController {
     }
 
     @PostMapping
-    public ResponseEntity<VehicleResponseDTO> createVehicle(@RequestBody VehicleCreateDTO vehicleCreateDTO) {
-        VehicleResponseDTO createdVehicle = vehicleService.createVehicle(vehicleCreateDTO);
+    public ResponseEntity<VehicleResponseDTO> createVehicle(@RequestBody VehicleBaseDTO vehicleBaseDto) {
+        VehicleResponseDTO createdVehicle = vehicleService.createVehicle(vehicleBaseDto);
+        return new ResponseEntity<>(createdVehicle, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/car")
+    public ResponseEntity<VehicleResponseDTO> createCar(
+            @RequestBody CarCreateDTO carDTO) {
+        VehicleResponseDTO createdVehicle = vehicleService.createVehicle(carDTO);
+        return new ResponseEntity<>(createdVehicle, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/truck")
+    public ResponseEntity<VehicleResponseDTO> createTruck(
+            @RequestBody TruckCreateDTO truckDTO) {
+        VehicleResponseDTO createdVehicle = vehicleService.createVehicle(truckDTO);
         return new ResponseEntity<>(createdVehicle, HttpStatus.CREATED);
     }
 
