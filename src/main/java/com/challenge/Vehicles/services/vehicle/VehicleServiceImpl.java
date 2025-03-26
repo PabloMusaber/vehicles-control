@@ -1,7 +1,6 @@
 package com.challenge.Vehicles.services.vehicle;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -69,12 +68,13 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public VehicleResponseDTO getVehicleById(Long id) {
-        Optional<Vehicle> optionalVehicle = vehicleRepository.findById(id);
-        if (optionalVehicle.isPresent()) {
-            return optionalVehicle.map(vehicle -> modelMapper.map(vehicle, VehicleResponseDTO.class)).get();
-        }
-        log.error("Vehicle not found by id.");
-        throw new VehicleNotFoundException();
+        Vehicle vehicle = vehicleRepository.findById(id)
+                .orElseThrow(() -> {
+                    log.error("Vehicle not found by id.");
+                    return new VehicleNotFoundException();
+                });
+
+        return modelMapper.map(vehicle, VehicleResponseDTO.class);
     }
 
     @Override
