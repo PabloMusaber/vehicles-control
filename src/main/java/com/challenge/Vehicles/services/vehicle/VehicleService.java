@@ -17,5 +17,5 @@ public interface VehicleService {
 
     boolean deleteVehicle(Long id);
 
-    VehicleResponseDTO getVehiclesByLicensePlate(String licensePlate);
+    VehicleResponseDTO getVehicleByLicensePlate(String licensePlate);
 }

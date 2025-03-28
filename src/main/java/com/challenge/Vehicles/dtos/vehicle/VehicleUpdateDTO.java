@@ -1,6 +1,6 @@
 package com.challenge.Vehicles.dtos.vehicle;
 
-public class VehicleUpdateDTO {
+public abstract class VehicleUpdateDTO {
 
     private Long id;
     private String brand;
