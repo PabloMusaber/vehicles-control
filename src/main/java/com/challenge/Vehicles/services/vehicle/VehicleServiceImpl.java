@@ -20,6 +20,7 @@ import com.challenge.Vehicles.dtos.vehicle.VehicleUpdateDTO;
 import com.challenge.Vehicles.entities.Car;
 import com.challenge.Vehicles.entities.Truck;
 import com.challenge.Vehicles.entities.Vehicle;
+import com.challenge.Vehicles.exceptions.LicensePlateAlreadyExistsException;
 import com.challenge.Vehicles.exceptions.VehicleNotFoundException;
 import com.challenge.Vehicles.exceptions.VehicleNotValidException;
 import com.challenge.Vehicles.repositories.VehicleRepository;
@@ -41,20 +42,18 @@ public class VehicleServiceImpl implements VehicleService {
     @Override
     @Transactional
     public VehicleResponseDTO createVehicle(VehicleBaseDTO vehicleBaseDTO) {
-        Vehicle vehicle;
+        Vehicle existingVehicle = vehicleRepository.findByLicensePlate(vehicleBaseDTO.getLicensePlate());
 
-        if (vehicleBaseDTO instanceof CarCreateDTO carDTO) {
-            vehicle = modelMapper.map(carDTO, Car.class);
-        } else if (vehicleBaseDTO instanceof TruckCreateDTO truckDTO) {
-            vehicle = modelMapper.map(truckDTO, Truck.class);
-        } else {
-            throw new VehicleNotValidException();
+        if (existingVehicle != null) {
+            log.error("Vehicle with license plate " + vehicleBaseDTO.getLicensePlate() + " already exists.");
+            throw new LicensePlateAlreadyExistsException();
         }
 
-        Vehicle savedVehicle = vehicleRepository.save(vehicle);
-        log.info("Vehicle created with license plate: " + savedVehicle.getLicensePlate());
+        Vehicle vehicle = mapToEntity(vehicleBaseDTO);
+        vehicleRepository.save(vehicle);
+        log.info("Vehicle created with license plate: " + vehicle.getLicensePlate());
 
-        return mapToResponseDTO(savedVehicle);
+        return mapToResponseDTO(vehicle);
     }
 
     @Override
@@ -126,5 +125,15 @@ public class VehicleServiceImpl implements VehicleService {
             return modelMapper.map(vehicle, TruckResponseDTO.class);
         }
         return modelMapper.map(vehicle, VehicleResponseDTO.class);
+    }
+
+    private Vehicle mapToEntity(VehicleBaseDTO vehicleBaseDTO) {
+        if (vehicleBaseDTO instanceof CarCreateDTO carDTO) {
+            return modelMapper.map(carDTO, Car.class);
+        } else if (vehicleBaseDTO instanceof TruckCreateDTO truckDTO) {
+            return modelMapper.map(truckDTO, Truck.class);
+        } else {
+            throw new VehicleNotValidException();
+        }
     }
 }

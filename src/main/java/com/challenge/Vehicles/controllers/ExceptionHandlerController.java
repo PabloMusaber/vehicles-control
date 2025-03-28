@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.challenge.Vehicles.entities.ErrorResponse;
+import com.challenge.Vehicles.exceptions.LicensePlateAlreadyExistsException;
 import com.challenge.Vehicles.exceptions.VehicleNotFoundException;
 import com.challenge.Vehicles.exceptions.VehicleNotValidException;
 
@@ -25,6 +26,16 @@ public class ExceptionHandlerController {
     @ExceptionHandler(VehicleNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<ErrorResponse> handleVehicleNotValidException(VehicleNotValidException ex) {
+        ErrorResponse error = new ErrorResponse(
+                HttpStatus.BAD_REQUEST,
+                ex.getMessage());
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(LicensePlateAlreadyExistsException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<ErrorResponse> handleLicensePlateAlreadyExistsException(
+            LicensePlateAlreadyExistsException ex) {
         ErrorResponse error = new ErrorResponse(
                 HttpStatus.BAD_REQUEST,
                 ex.getMessage());
