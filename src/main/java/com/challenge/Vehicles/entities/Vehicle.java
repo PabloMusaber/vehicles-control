@@ -22,7 +22,7 @@ public class Vehicle extends BaseEntity implements Serializable {
     @Column(name = "model", nullable = false)
     private String model;
 
-    @Column(name = "license_plate", nullable = false)
+    @Column(name = "license_plate", nullable = false, unique = true)
     private String licensePlate;
 
     @Column(name = "year", nullable = false)
