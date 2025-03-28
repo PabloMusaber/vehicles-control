@@ -19,6 +19,7 @@ import com.challenge.Vehicles.dtos.vehicle.VehicleResponseDTO;
 import com.challenge.Vehicles.services.truck.TruckService;
 import com.challenge.Vehicles.services.vehicle.VehicleService;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 
 @RestController
@@ -33,6 +34,7 @@ public class TruckController {
         this.truckService = truckService;
     }
 
+    @Operation(summary = "Crea un camión")
     @PostMapping
     public ResponseEntity<VehicleResponseDTO> createTruck(
             @RequestBody TruckCreateDTO truckDTO) {
@@ -40,6 +42,7 @@ public class TruckController {
         return new ResponseEntity<>(createdVehicle, HttpStatus.CREATED);
     }
 
+    @Operation(summary = "Actualiza un camión")
     @PutMapping("/{id}")
     public ResponseEntity<VehicleResponseDTO> updateTruck(
             @PathVariable Long id,
@@ -49,6 +52,7 @@ public class TruckController {
         return ResponseEntity.ok(updatedTruck);
     }
 
+    @Operation(summary = "Obtiene todos los camiones cargados en el sistema")
     @GetMapping
     public ResponseEntity<List<TruckResponseDTO>> getAllTrucks() {
         return ResponseEntity.ok(truckService.getAllTrucks());

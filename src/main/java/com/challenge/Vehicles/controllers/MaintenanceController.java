@@ -13,6 +13,9 @@ import com.challenge.Vehicles.dtos.maintenance.MaintenanceCreateDTO;
 import com.challenge.Vehicles.dtos.maintenance.MaintenanceResponseDTO;
 import com.challenge.Vehicles.exceptions.VehicleNotValidException;
 import com.challenge.Vehicles.services.maintenance.MaintenanceService;
+
+import io.swagger.v3.oas.annotations.Operation;
+
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
@@ -25,6 +28,7 @@ public class MaintenanceController {
         this.maintenanceService = maintenanceService;
     }
 
+    @Operation(summary = "Registra un mantenimiento para un vehículo")
     @PostMapping
     public ResponseEntity<MaintenanceResponseDTO> addMaintenance(
             @PathVariable Long vehicleId,
@@ -39,6 +43,7 @@ public class MaintenanceController {
 
     }
 
+    @Operation(summary = "Obtiene todos los mantenimientos de un vehículo")
     @GetMapping
     public ResponseEntity<List<MaintenanceResponseDTO>> getMaintenancesByVehicle(@PathVariable Long vehicleId) {
         List<MaintenanceResponseDTO> maintenances = maintenanceService.getMaintenancesByVehicle(vehicleId);

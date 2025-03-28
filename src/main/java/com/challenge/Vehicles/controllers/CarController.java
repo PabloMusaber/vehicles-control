@@ -19,6 +19,7 @@ import com.challenge.Vehicles.dtos.vehicle.VehicleResponseDTO;
 import com.challenge.Vehicles.services.car.CarService;
 import com.challenge.Vehicles.services.vehicle.VehicleService;
 
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 
 @RestController
@@ -33,6 +34,7 @@ public class CarController {
         this.carService = carService;
     }
 
+    @Operation(summary = "Crea un auto")
     @PostMapping
     public ResponseEntity<VehicleResponseDTO> createCar(
             @RequestBody CarCreateDTO carDTO) {
@@ -40,6 +42,7 @@ public class CarController {
         return new ResponseEntity<>(createdVehicle, HttpStatus.CREATED);
     }
 
+    @Operation(summary = "Actualiza un auto")
     @PutMapping("/{id}")
     public ResponseEntity<VehicleResponseDTO> updateCar(
             @PathVariable Long id,
@@ -49,6 +52,7 @@ public class CarController {
         return ResponseEntity.ok(updatedCar);
     }
 
+    @Operation(summary = "Obtiene todos los autos cargados en el sistema")
     @GetMapping
     public ResponseEntity<List<CarResponseDTO>> getAllCars() {
         return ResponseEntity.ok(carService.getAllCars());
