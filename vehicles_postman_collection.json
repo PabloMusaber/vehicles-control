@@ -1,0 +1,335 @@
+{
+	"info": {
+		"_postman_id": "c2b7411a-ff7b-4961-9b16-d371fbb7e642",
+		"name": "Vehicles",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17398472",
+		"_collection_link": "https://challenges-3515.postman.co/workspace/Challenges~40d3d667-22a8-4f8f-aa2b-5fbcffed45d0/collection/17398472-c2b7411a-ff7b-4961-9b16-d371fbb7e642?action=share&source=collection_link&creator=17398472"
+	},
+	"item": [
+		{
+			"name": "Vehicles",
+			"item": [
+				{
+					"name": "Cars",
+					"item": [
+						{
+							"name": "Create Car",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"brand\": \"Renault\",\n    \"model\": \"Clio\",\n    \"licensePlate\": \"AAA 111\",\n    \"year\": 2006,\n    \"mileage\": 230000,\n    \"engineDisplacement\": 1.2,\n    \"type\": 1, // 0 =  HATCHBACK, 1 = SEDAN\n    \"doors\": 3,\n    \"passangers\": 5,\n    \"trunkCapacity\": 50\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/vehicles/cars",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"vehicles",
+										"cars"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Car",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"brand\": \"Renault\",\n    \"model\": \"Clio\",\n    \"licensePlate\": \"ABA 111\",\n    \"year\": 2018,\n    \"mileage\": 230000,\n    \"engineDisplacement\": 1.6,\n    \"type\": 1,\n    \"doors\": 5,\n    \"passangers\": 5,\n    \"trunkCapacity\": 50\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/vehicles/cars/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"vehicles",
+										"cars",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Cars",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/vehicles/cars",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"vehicles",
+										"cars"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Trucks",
+					"item": [
+						{
+							"name": "Create Truck",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"brand\": \"Scania\",\n    \"model\": \"R Series\",\n    \"licensePlate\": \"YZR 124\",\n    \"year\": 2015,\n    \"mileage\": 560000,\n    \"engineDisplacement\": 13.0,\n    \"type\": 1, // 0 = 3/4, 1 = Tolva\n    \"loadCapacity\": 25000,\n    \"axes\": 4\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/vehicles/trucks",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"vehicles",
+										"trucks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Truck",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"brand\": \"Volvo\",\n    \"model\": \"FH\",\n    \"licensePlate\": \"PQR 789\",\n    \"year\": 2023,\n    \"mileage\": 180555,\n    \"engineDisplacement\": 13.5,\n    \"type\": 1,\n    \"loadCapacity\": 48000,\n    \"axes\": 5\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/vehicles/trucks/10",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"vehicles",
+										"trucks",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Trucks",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/vehicles/trucks",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"vehicles",
+										"trucks"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get All Vehicles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/vehicles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vehicles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Vechicle By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/vehicles/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vehicles",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Vehicle",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/vehicles/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vehicles",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Vehicle By Licence Plate",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/vehicles/licencePlate/DDD%20444",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vehicles",
+								"licencePlate",
+								"DDD%20444"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Maintenances",
+			"item": [
+				{
+					"name": "Create Maintenance",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"Cambio de aceite\",\n  \"date\": \"2025-03-01\",\n  \"cost\": 70000,\n  \"mileage\": 10000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/vehicles/1/maintenances",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vehicles",
+								"1",
+								"maintenances"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Maintenances By VehicleId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/vehicles/1/maintenances",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"vehicles",
+								"1",
+								"maintenances"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
