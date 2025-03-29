@@ -25,7 +25,7 @@ public class Vehicle extends BaseEntity implements Serializable {
     @Column(name = "license_plate", nullable = false, unique = true)
     private String licensePlate;
 
-    @Column(name = "year", nullable = false)
+    @Column(name = "year_", nullable = false)
     private Integer year;
 
     @Column(name = "mileage", nullable = false)
