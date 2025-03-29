@@ -1,6 +1,6 @@
 # Desafío Técnico - Vehículos
 
-[![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](#) [![Spring Boot](https://img.shields.io/badge/Spring_Boot-F2F4F9?style=for-the-badge&logo=spring-boot&logoColor=6DB33F)](#) [![Maven](https://img.shields.io/badge/Apache_Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)](#) [![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white)](#) [![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)](#)
+[![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](#) [![Spring Boot](https://img.shields.io/badge/Spring_Boot-F2F4F9?style=for-the-badge&logo=spring-boot&logoColor=6DB33F)](#) [![Maven](https://img.shields.io/badge/Apache_Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)](#) [![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white)](#) [![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)](#) [![Azure](https://img.shields.io/badge/Azure_-0078D7?style=for-the-badge&logo=azure-devops&logoColor=white)](#) [![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)](#)
 
 ## Diagrama de Clases 📘
 
@@ -24,6 +24,7 @@
 - Uso de herramienta de logging ([Log4j](https://logging.apache.org/log4j/2.x/index.html)).
 - Se implementa [Swagger](https://swagger.io/) para la documentación de la API.
 - Se documenta el versionado de acuerdo a la especificación de [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+- Se realiza el deploy de la aplicación utilizando **Docker** y la nube de **Azure**.
 
 ## Estructura del proyecto 📋
 
@@ -59,6 +60,19 @@ Los endpoints disponibles para realizar estas acciones son los siguientes:
 <div style="text-align: center;">
   <img src="images/endpoints.jpg" width="80%" alt="Solution Diagram">
 </div>
+
+## Deploy 🚀
+
+En este repositorio hay una segunda rama llamada **h2-database**. En dicha rama se cambia la base de datos MySQL por una **H2**, con el fin de tener una base de datos en memoria.
+
+Además se agrega un **Dockerfile** necesario para construir la imagen de la aplicación a partir de la rama mencionada.
+
+Se utiliza la nube de **Azure** para desplegar la aplicación con utilizando un contendor de **Docker**.
+
+- Se puede probar el sistema entrando a **Swagger**: https://web-app-vehicles-hxcabrhcfkcybxft.brazilsouth-01.azurewebsites.net/swagger-ui/index.html
+- Puede probar los endpoints enviando peticios a esta dirección https://web-app-vehicles-hxcabrhcfkcybxft.brazilsouth-01.azurewebsites.net/ utilizando la colección de **Postman** que se encuentra en el archivo **vehicles_postman_collection.json** dentro de este repositorio.
+
+**_NOTA_**: Es posible que el sistema en Azure demore en responder, puesto que entra en estado de "dormido" luego de un cierto periodo de inactividad.
 
 ## Uso del proyecto 📝
 
